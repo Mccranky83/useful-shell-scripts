@@ -41,6 +41,11 @@ missing_volumes() {
 	done
 }
 
+if test ${#*} -eq 0; then
+	echo "Usage: $(basename "$0") [-l path/to/folder] [-r arg1-arg2]" >&2
+	exit 1
+fi
+
 while getopts 'l:r:h' opt; do
 	case "$opt" in
 	l) location="$OPTARG" ;;
